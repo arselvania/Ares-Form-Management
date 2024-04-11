@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>فرم تو در تو با چک‌باکس‌ها</title>
+    <script>
+        function showForms() {
+            // پنهان کردن تمام فرم‌ها
+            var forms = document.getElementsByClassName("nested-form");
+            for (var i = 0; i < forms.length; i++) {
+                forms[i].style.display = "none";
+            }
+
+            // نمایش فرم‌های مختار با چک‌باکس‌های تیک خورده
+            var checkboxes = document.getElementsByName("option");
+            for (var i = 0; i < checkboxes.length; i++) {
+                var checkbox = checkboxes[i];
+                if (checkbox.checked) {
+                    var selectedForm = document.getElementById(checkbox.value);
+                    if (selectedForm) {
+                        selectedForm.style.display = "block";
+                    }
+                }
+            } 
+        }
+    </script>
+
+<script>
+    function submitForms() {
+        var forms = document.getElementsByClassName("nested-form");
+        for (var i = 0; i < forms.length; i++) {
+            var form = forms[i].querySelector("form");
+            form.submit();
+        }
+    }
+</script>
+
+</head>  
+<body>
+    <h1>فرم ساز</h1>
+    <form>
+        <label>گزینه‌ها:</label><br>
+        <input type="checkbox" name="option" value="form1" onchange="showForms()">Name:<br>
+        <input type="checkbox" name="option" value="form2" onchange="showForms()">Last Name:<br>
+        <input type="checkbox" name="option" value="form3" onchange="showForms()">Description:<br>
+        <input type="checkbox" name="option" value="form4" onchange="showForms()">phone number:<br>
+        <input type="checkbox" name="option" value="form5" onchange="showForms()">email:<br>
+        <input type="checkbox" name="option" value="form6" onchange="showForms()">text:<br>
+        <input type="checkbox" name="option" value="form7" onchange="showForms()">password:<br>
+        <input type="checkbox" name="option" value="form8" onchange="showForms()">Address:<br>
+
+    </form>
+
+    <div id="form1" class="nested-form" style="display: none;">
+        <h2>Name:</h2>
+        <form action="ares-form-management.php" method="POST">
+            <label for="first-name">نام برچسب:</label>
+            <input type="text" id="first-name" name="first-name" required><br>
+        
+            <label for="last-name">مقدار اولیه:</label>
+            <input type="text" id="last-name" name="last-name" required><br>
+        
+            <label for="option">آیا این فیلد ضروری است ؟</label>
+            <input type="checkbox" id="option" name="option" value="option1"><br>
+        </form>
+    </div>
+
+    <div id="form2" class="nested-form" style="display: none;">
+        <h2>Last Name:</h2>
+        <form action="ares-form-management.php" method="POST">
+            <label for="first-name">نام برچسب:</label>
+            <input type="text" id="first-name" name="first-name" required><br>
+        
+            <label for="last-name">مقدار اولیه:</label>
+            <input type="text" id="last-name" name="last-name" required><br>
+        
+            <label for="option">آیا این فیلد ضروری است ؟</label>
+            <input type="checkbox" id="option" name="option" value="option1"><br>
+        </form>
+    </div>
+
+    <div id="form3" class="nested-form" style="display: none;">
+        <h2>Description:</h2>
+        <form action="ares-form-management.php" method="POST">
+            <label for="first-name">نام برچسب:</label>
+            <input type="text" id="first-name" name="first-name" required><br>
+        
+            <label for="last-name">مقدار اولیه:</label>
+            <input type="text" id="last-name" name="last-name" required><br>
+        
+            <label for="option">آیا این فیلد ضروری است ؟</label>
+            <input type="checkbox" id="option" name="option" value="option1"><br>
+        </form>
+    </div>
+
+    <div id="form4" class="nested-form" style="display: none;">
+        <h2>phone number:</h2>
+        <form action="ares-form-management.php" method="POST">
+            <label for="first-name">نام برچسب:</label>
+            <input type="text" id="first-name" name="first-name" required><br>
+        
+            <label for="last-name">مقدار اولیه:</label>
+            <input type="text" id="last-name" name="last-name" required><br>
+        
+            <label for="option">آیا این فیلد ضروری است ؟</label>
+            <input type="checkbox" id="option" name="option" value="option1"><br>
+        </form>
+    </div>
+
+    <div id="form5" class="nested-form" style="display: none;">
+        <h2>email:</h2>
+        <form action="ares-form-management.php" method="POST">
+                        <label for="first-name">نام برچسب:</label>
+            <input type="text" id="first-name" name="first-name" required><br>
+        
+            <label for="last-name">مقدار اولیه:</label>
+            <input type="text" id="last-name" name="last-name" required><br>
+        
+            <label for="option">آیا این فیلد ضروری است ؟</label>
+            <input type="checkbox" id="option" name="option" value="option1"><br>
+        </form>
+    </div>
+
+    <div id="form6" class="nested-form" style="display: none;">
+        <h2>text:</h2>
+        <form action="ares-form-management.php" method="POST">
+                        <label for="first-name">نام برچسب:</label>
+            <input type="text" id="first-name" name="first-name" required><br>
+        
+            <label for="last-name">مقدار اولیه:</label>
+            <input type="text" id="last-name" name="last-name" required><br>
+        
+            <label for="option">آیا این فیلد ضروری است ؟</label>
+            <input type="checkbox" id="option" name="option" value="option1"><br>
+        </form>
+    </div>
+
+    <div id="form7" class="nested-form" style="display: none;">
+        <h2>password:</h2>
+        <form action="ares-form-management.php" method="POST">
+                        <label for="first-name">نام برچسب:</label>
+            <input type="text" id="first-name" name="first-name" required><br>
+        
+            <label for="last-name">مقدار اولیه:</label>
+            <input type="text" id="last-name" name="last-name" required><br>
+        
+            <label for="option">آیا این فیلد ضروری است ؟</label>
+            <input type="checkbox" id="option" name="option" value="option1"><br>
+        </form>
+    </div>
+
+    <div id="form8" class="nested-form" style="display: none;">
+        <h2>Address:</h2>
+        <form action="ares-form-management.php" method="POST">
+                        <label for="first-name">نام برچسب:</label>
+            <input type="text" id="first-name" name="first-name" required><br>
+        
+            <label for="last-name">مقدار اولیه:</label>
+            <input type="text" id="last-name" name="last-name" required><br>
+        
+            <label for="option">آیا این فیلد ضروری است ؟</label>
+            <input type="checkbox" id="option" name="option" value="option1"><br>
+        </form>
+    </div>
+    <button onclick="submitForms()">ارسال</button>
+</body>
+</html>

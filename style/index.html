@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link href="./css/main.css" rel="stylesheet" />
+    <link href="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" rel="stylesheet">
+    <script>
+      function selectSettingsOption() {
+        var settingsButton = document.getElementById("settings-button");
+        settingsButton.checked = true;
+      }
+      </script>
+
+
+<script>
+  function showForms() {
+      // پنهان کردن تمام فرم‌ها
+      var forms = document.getElementsByClassName("nested-form");
+      for (var i = 0; i < forms.length; i++) {
+          forms[i].style.display = "none";
+      }
+
+      // نمایش فرم‌های مختار با چک‌باکس‌های تیک خورده
+      var checkboxes = document.getElementsByName("option");
+      for (var i = 0; i < checkboxes.length; i++) {
+          var checkbox = checkboxes[i];
+          if (checkbox.checked) {
+              var selectedForm = document.getElementById(checkbox.value);
+              if (selectedForm) {
+                  selectedForm.style.display = "block";
+              }
+          }
+      } 
+  }
+</script>
+
+<script>
+  function submitForms() {
+      var forms = document.getElementsByClassName("nested-form");
+      for (var i = 0; i < forms.length; i++) {
+          var form = forms[i].querySelector("form");
+          form.submit();
+      }
+  }
+</script>
+
+
+
+  </head>
+<body>
+    <div class="container">
+      <h1 class="title">Ares Form Management</h1>
+    
+      <div class="button-grid" style="margin-bottom: 20px;">
+
+        <button class="button-primary3" onClick="showContent('settings')">
+          <span class="icon"><i class="fa fa-cogs"></i></span>
+          <span class="text">تنظیمات</span>
+        </button>
+        <button class="button-secondary3" onClick="showContent('create-form')">
+          <span class="icon"><i class="fa fa-plus"></i></span>
+          <span class="text">ساخت فرم</span>
+        </button>
+        <button class="button-success" onClick="showContent('view-forms')">
+          <span class="icon"><i class="fa fa-eye"></i></span>
+          <span class="text">مشاهده فرم ها</span>
+        </button>
+        <button class="button-danger" onClick="showContent('view-table')">
+          <span class="icon"><i class="fa fa-table"></i></span>
+          <span class="text">مشاهده جدول</span>
+        </button>
+      </div>
+      
+      <div id="content-container"></div>
+    </div>
+    
+    <script>
+      function showContent(content) {
+        var contentContainer = document.getElementById("content-container");
+        contentContainer.innerHTML = getContent(content);
+      }
+      
+      function getContent(content) {
+        switch (content) {
+          case 'settings':
+            return '<p>محتوای صفحه تنظیمات</p>';
+            case 'create-form':
+  return `
+        <h1>فرم ساز</h1>
+        <form>
+            <label>گزینه‌ها:</label><br>
+            <input type="checkbox" name="option" value="form1" onchange="showForms()">Name:<br>
+            <input type="checkbox" name="option" value="form2" onchange="showForms()">Last Name:<br>
+            <input type="checkbox" name="option" value="form3" onchange="showForms()">Description:<br>
+            <input type="checkbox" name="option" value="form4" onchange="showForms()">phone number:<br>
+            <input type="checkbox" name="option" value="form5" onchange="showForms()">email:<br>
+            <input type="checkbox" name="option" value="form6" onchange="showForms()">text:<br>
+            <input type="checkbox" name="option" value="form7" onchange="showForms()">password:<br>
+            <input type="checkbox" name="option" value="form8" onchange="showForms()">Address:<br>
+
+        </form>
+
+        <div id="form1" class="nested-form" style="display: none;">
+            <h2>Name:</h2>
+            <form action="ares-form-management.php" method="POST">
+                <label for="first-name">نام برچسب:</label>
+                <input type="text" id="first-name" name="first-name" required><br>
+            
+                <label for="last-name">مقدار اولیه:</label>
+                <input type="text" id="last-name" name="last-name" required><br>
+            
+                <label for="option">آیا این فیلد ضروری است ؟</label>
+                <input type="checkbox" id="option" name="option" value="option1"><br>
+            </form>
+        </div>
+
+        <div id="form2" class="nested-form" style="display: none;">
+            <h2>Last Name:</h2>
+            <form action="ares-form-management.php" method="POST">
+                <label for="first-name">نام برچسب:</label>
+                <input type="text" id="first-name" name="first-name" required><br>
+            
+                <label for="last-name">مقدار اولیه:</label>
+                <input type="text" id="last-name" name="last-name" required><br>
+            
+                <label for="option">آیا این فیلد ضروری است ؟</label>
+                <input type="checkbox" id="option" name="option" value="option1"><br>
+            </form>
+        </div>
+
+        <div id="form3" class="nested-form" style="display: none;">
+            <h2>Description:</h2>
+            <form action="ares-form-management.php" method="POST">
+                <label for="description">نام برچسب:</label>
+                <input type="text" id="description" name="description" required><br>
+            
+                <label for="option">آیا این فیلد ضروری است ؟</label>
+                <input type="checkbox" id="option" name="option" value="option1"><br>
+            </form>
+        </div>
+
+        <div id="form4" class="nested-form" style="display: none;">
+            <h2>Phone Number:</h2>
+            <form action="ares-form-management.php" method="POST">
+                <label for="phone">نام برچسب:</label>
+                <input type="text" id="phone" name="phone" required><br>
+            
+                <label for="option">آیا این فیلد ضروری است ؟</label>
+                <input type="checkbox" id="option" name="option" value="option1"><br>
+            </form>
+        </div>
+
+        <div id="form5" class="nested-form" style="display: none;">
+            <h2>Email:</h2>
+            <form action="ares-form-management.php" method="POST">
+                <label for="email">نام برچسب:</label>
+                <input type="text" id="email" name="email" required><br>
+            
+                <label for="option">آیا این فیلد ضروری است ؟</label>
+                <input type="checkbox" id="option" name="option" value="option1"><br>
+            </form>
+        </div>
+
+        <div id="form6" class="nested-form" style="display: none;">
+            <h2>Text:</h2>
+            <form action="ares-form-management.php" method="POST">
+                <label for="text">نام برچسب:</label>
+                <input type="text" id="text" name="text" required><br>
+            
+                <label for="option">آیا این فیلد ضروری است ؟</label>
+                <input type="checkbox" id="option" name="option" value="option1"><br>
+            </form>
+        </div>
+
+        <div id="form7" class="nested-form" style="display: none;">
+            <h2>Password:</h2>
+            <form action="ares-form-management.php" method="POST">
+                <label for="password">نام برچسب:</label>
+                <input type="password" id="password" name="password" required><br>
+            
+                <label for="option">آیا این فیلد ضروری است ؟</label>
+                <input type="checkbox" id="option" name="option" value="option1"><br>
+            </form>
+        </div>
+
+        <div id="form8" class="nested-form" style="display: none;">
+            <h2>Address:</h2>
+            <form action="ares-form-management.php" method="POST">
+                <label for="address">نام برچسب:</label>
+                <input type="text" id="address" name="address" required><br>
+            
+                <label for="option">آیا این فیلد ضروری است ؟</label>
+                <input type="checkbox" id="option" name="option" value="option1"><br>
+            </form>
+        </div>
+
+        <br>
+        <button type="button" onclick="submitForms()">Submit</button>
+
+  `;
+
+          case 'view-forms':
+            return '<p>محتوای صفحه مشاهده فرم ها</p>';
+          case 'view-table':
+            return '<p>محتوای صفحه مشاهده جدول</p>';
+          default:
+            return '';
+        }
+      }
+    </script>
+    
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
